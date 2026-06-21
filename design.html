@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오늘의 영업 브리핑</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#eef0f3; --surface:#ffffff; --ink:#15181d; --ink2:#4a5159; --muted:#878f99;
+  --line:#e6e9ee; --line2:#eef1f5;
+  --brand:#3a5bd9; --brand-soft:#eef1fd;
+  --hot:#d6453f; --hot-soft:#fdecea; --hot-strip:#e0524c;
+  --warm:#c07d12; --warm-soft:#fdf3e2;
+  --cool:#1f9268; --cool-soft:#e7f5ef;
+  --new:#2f6bd4; --new-soft:#eaf1fc; --new-bg:#f3f7fd;
+  --radius:16px; --shadow:0 1px 2px rgba(20,30,60,.05),0 1px 3px rgba(20,30,60,.04);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:440px;margin:0 auto;padding:0 0 48px}
+
+/* ===== Header ===== */
+.appbar{
+  position:sticky;top:0;z-index:20;background:rgba(238,240,243,.86);
+  backdrop-filter:saturate(1.2) blur(8px);
+  padding:16px 16px 12px;border-bottom:1px solid var(--line);
+}
+.appbar h1{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0}
+.appbar .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
+.summary{display:flex;gap:8px;margin-top:12px}
+.stat{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:8px 10px;text-align:center}
+.stat .n{font-size:18px;font-weight:800;line-height:1.1;letter-spacing:-.5px}
+.stat .l{font-size:10.5px;color:var(--muted);margin-top:2px;font-weight:600}
+.stat.hot .n{color:var(--hot)} .stat.new .n{color:var(--new)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:11px;font-size:11px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.dot{width:8px;height:8px;border-radius:50%}
+.dot.hot{background:var(--hot)}.dot.warm{background:var(--warm)}.dot.cool{background:var(--cool)}
+
+/* ===== Section ===== */
+.section{margin:18px 14px 0}
+.sec-head{display:flex;align-items:center;gap:8px;position:sticky;top:118px;z-index:10;
+  padding:8px 2px;background:linear-gradient(var(--bg) 70%,rgba(238,240,243,0));}
+.sec-head .title{font-size:14.5px;font-weight:800;letter-spacing:-.2px}
+.sec-head .count{font-size:11px;font-weight:700;color:var(--muted);
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1px 8px}
+.sec-bar{width:4px;height:15px;border-radius:3px;background:var(--ink)}
+
+/* ===== Card ===== */
+.card{position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:13px 14px 12px;margin-bottom:11px;
+  border-left:4px solid var(--line)}
+.card.hot{border-left-color:var(--hot-strip);box-shadow:0 1px 2px rgba(214,69,63,.08),0 2px 8px rgba(214,69,63,.07)}
+.card.warm{border-left-color:var(--warm)}
+.card.cool{border-left-color:var(--cool)}
+.c-top{display:flex;align-items:flex-start;gap:9px}
+.rank{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#262b33;color:#fff;
+  font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.card.hot .rank{background:var(--hot)}
+.c-name{flex:1;min-width:0}
+.c-name .nm{font-size:16px;font-weight:800;letter-spacing:-.3px;line-height:1.25}
+.badge{display:inline-block;margin-top:4px;font-size:10.5px;font-weight:700;color:var(--brand);
+  background:var(--brand-soft);border-radius:6px;padding:2px 7px}
+.pill{flex:0 0 auto;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;margin-top:1px}
+.pill.hot{color:var(--hot);background:var(--hot-soft)}
+.pill.warm{color:var(--warm);background:var(--warm-soft)}
+.pill.cool{color:var(--cool);background:var(--cool-soft)}
+.addr{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);margin:9px 0 0}
+.addr svg{flex:0 0 auto;opacity:.7}
+.status{font-size:12.5px;color:var(--ink2);margin:6px 0 0}
+.status .k{color:var(--muted);font-weight:600}
+
+/* 도입 포인트 — 카드의 시각적 초점 */
+.point{margin-top:10px;background:linear-gradient(180deg,#fbfcff,#f6f8ff);
+  border:1px solid #e4e9fb;border-left:3px solid var(--brand);border-radius:10px;padding:9px 11px}
+.point .lab{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;
+  color:var(--brand);letter-spacing:.2px;margin-bottom:3px;text-transform:none}
+.point .txt{font-size:13px;color:#23303f;font-weight:500;line-height:1.5}
+
+/* 액션 버튼 */
+.actions{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.btn{flex:1 1 auto;min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  font-size:12.5px;font-weight:700;text-decoration:none;border-radius:10px;padding:0 12px;white-space:nowrap}
+.btn.primary{background:var(--ink);color:#fff;border:1px solid var(--ink);min-width:108px}
+.btn.primary.call{background:var(--brand);border-color:var(--brand)}
+.btn.ghost{background:#fff;color:var(--ink2);border:1px solid var(--line);flex:0 1 auto}
+.btn:active{transform:translateY(1px)}
+
+/* 신규오픈 섹션 박스 */
+.newzone{margin:18px 14px 0;background:var(--new-bg);border:1px solid #dde8f8;
+  border-radius:18px;padding:6px 10px 12px}
+.newzone .sec-head{position:static;background:none;padding:10px 4px 6px}
+.newzone .sec-bar{background:var(--new)}
+.newzone .card{border:1px solid #e2eaf6}
+.newzone .card.hot{border-left:4px solid var(--hot-strip)}
+.tag-new{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;
+  color:#fff;background:var(--new);border-radius:6px;padding:2px 7px;margin-left:6px;letter-spacing:.3px;vertical-align:2px}
+.openinfo{font-size:11.5px;font-weight:700;color:var(--new);margin-top:7px}
+
+/* 빈 상태 */
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);
+  padding:22px 14px;text-align:center;color:var(--muted);font-size:12.5px}
+.empty .ic{font-size:18px;opacity:.5;margin-bottom:4px}
+
+footer{margin:26px 16px 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 상단: 제목 + 압축 요약 + 범례 (A안 축소) -->
+  <header class="appbar">
+    <h1>오늘의 영업 브리핑</h1>
+    <div class="sub">6월 21일 (일) · 천안·아산 / 두정동 · 매뉴얼클라쓰 영업용</div>
+    <div class="summary">
+      <div class="stat"><div class="n">3</div><div class="l">전체 후보</div></div>
+      <div class="stat hot"><div class="n">3</div><div class="l">핫리드</div></div>
+      <div class="stat new"><div class="n">1</div><div class="l">신규오픈</div></div>
+    </div>
+    <div class="legend">
+      <span><i class="dot hot"></i>핫리드 · 지금 연락</span>
+      <span><i class="dot warm"></i>웜리드 · 근거 보강</span>
+      <span><i class="dot cool"></i>관찰 · 대기</span>
+    </div>
+  </header>
+
+  <!-- 음식점 -->
+  <section class="section">
+    <div class="sec-head"><span class="sec-bar" style="background:var(--hot)"></span>
+      <span class="title">음식점 · 외식</span><span class="count">2곳</span></div>
+
+    <article class="card hot">
+      <div class="c-top">
+        <span class="rank">1</span>
+        <div class="c-name"><div class="nm">팔각도 천안두정점</div><span class="badge">닭갈비 · 프랜차이즈</span></div>
+        <span class="pill hot">핫리드</span>
+      </div>
+      <div class="addr">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>
+        천안 서북구 서부대로 746 1층
+      </div>
+      <div class="status"><span class="k">운영현황 ·</span> 자체도메인(8gakdo.co.kr) 보유 프랜차이즈 가맹점. 두정 먹자상권.</div>
+      <div class="point">
+        <div class="lab">▶ 도입 포인트 · 전화 멘트</div>
+        <div class="txt">가맹 브랜드 = 본사 차원 가맹점 운영 매뉴얼이 곧 상품. 점주엔 현장 보완, 본사엔 가맹 표준화 패키지로 양방향 영업.</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary call" href="#">📞 지도·전화</a>
+        <a class="btn ghost" href="#">본사 홈페이지</a>
+      </div>
+    </article>
+
+    <article class="card hot">
+      <div class="c-top">
+        <span class="rank">2</span>
+        <div class="c-name"><div class="nm">청원식당 부대찌개 천안두정본점</div><span class="badge">찌개 · 전골</span></div>
+        <span class="pill hot">핫리드</span>
+      </div>
+      <div class="addr">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>
+        천안 서북구 두정상가4길 32-4 1층
+      </div>
+      <div class="status"><span class="k">운영현황 ·</span> 상호에 '본점' 표기 = 분점 확장 의도. 블로그 마케팅 운영.</div>
+      <div class="point">
+        <div class="lab">▶ 도입 포인트 · 전화 멘트</div>
+        <div class="txt">'본점' 네이밍은 프랜차이즈화 초기 신호. 분점 내기 전 매뉴얼 정리하면 확장 속도가 빨라진다는 각도.</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary call" href="#">📞 지도·전화</a>
+        <a class="btn ghost" href="#">매장 블로그</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- 미용실 (빈 상태) -->
+  <section class="section">
+    <div class="sec-head"><span class="sec-bar" style="background:var(--cool)"></span>
+      <span class="title">미용실 · 헤어</span><span class="count">0곳</span></div>
+    <div class="empty"><div class="ic">✂</div>오늘 샘플 데이터에는 미용실 후보가 없습니다.</div>
+  </section>
+
+  <!-- 신규오픈 (별도 톤) -->
+  <section class="newzone">
+    <div class="sec-head"><span class="sec-bar"></span>
+      <span class="title">신규오픈</span><span class="count">1곳</span></div>
+
+    <article class="card hot">
+      <div class="c-top">
+        <span class="rank">1</span>
+        <div class="c-name">
+          <div class="nm">매드포갈릭 갤러리아 센터시티점<span class="tag-new">NEW</span></div>
+          <span class="badge">양식 · 프랜차이즈</span>
+        </div>
+        <span class="pill hot">핫리드</span>
+      </div>
+      <div class="openinfo">🗓 2026.02 신규 오픈</div>
+      <div class="addr">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>
+        천안 불당동 갤러리아 센터시티
+      </div>
+      <div class="status"><span class="k">운영현황 ·</span> 2026.02 신규 오픈, 패밀리레스토랑 프랜차이즈 가맹.</div>
+      <div class="point">
+        <div class="lab">▶ 도입 포인트 · 전화 멘트</div>
+        <div class="txt">오픈 직후 = 신규 직원 대거 채용 시점. 접객·조리 표준화가 초기 평점을 좌우.</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary call" href="#">📞 지도·전화</a>
+      </div>
+    </article>
+  </section>
+
+  <footer>데이터 출처: 네이버 지역검색·블로그 · 매일 09:00 자동 생성<br>버튼 탭 시 네이버지도(전화)·홈페이지·블로그로 이동</footer>
+
+</div>
+</body>
+</html>
