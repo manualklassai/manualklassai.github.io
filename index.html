@@ -9,8 +9,9 @@ body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSys
 .appbar{padding:15px 16px 0}
 .appbar h1{font-size:20px;font-weight:800;letter-spacing:-.4px;margin:0}
 .appbar .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
-.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;font-size:11px;color:var(--ink2)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:9px;font-size:11px;color:var(--ink2)}
 .legend span{display:inline-flex;align-items:center;gap:5px}
+.legend-note{color:var(--muted)}
 .dot{width:8px;height:8px;border-radius:50%}.dot.hot{background:var(--hot)}.dot.warm{background:var(--warm)}.dot.cool{background:var(--cool)}
 .tabs{position:sticky;top:0;z-index:30;display:flex;gap:6px;margin-top:13px;padding:8px 12px 10px;background:rgba(238,240,243,.94);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 4px 8px;font-size:12.5px;font-weight:700;color:var(--ink2);user-select:none}
@@ -28,7 +29,9 @@ body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSys
 .c-name{flex:1;min-width:0}.c-name .nm{font-size:16px;font-weight:800;letter-spacing:-.3px;line-height:1.25}
 .badge{display:inline-block;margin-top:4px;font-size:10.5px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:6px;padding:2px 7px}
 .pill{flex:0 0 auto;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;margin-top:1px}
-.addr{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);margin:9px 0 0}
+.hours{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#1f3a5f;background:#eef3fb;border:1px solid #dde7f5;border-radius:8px;padding:3px 9px;margin-top:9px}
+.hours.dim{color:#9aa3ad;background:#f4f5f7;border-color:#e6e9ee;font-weight:600}
+.addr{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);margin:7px 0 0}
 .addr svg{flex:0 0 auto;opacity:.7}
 .status{font-size:12.5px;color:var(--ink2);margin:6px 0 0}.status .k{color:var(--muted);font-weight:600}
 .openinfo{font-size:11.5px;font-weight:700;color:var(--new);margin-top:7px}
@@ -37,8 +40,9 @@ body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSys
 .point .lab{font-size:10.5px;font-weight:800;color:var(--brand);margin-bottom:3px}
 .point .txt{font-size:13px;color:#23303f;font-weight:500;line-height:1.5}
 .actions{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
-.btn{flex:1 1 auto;min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:12.5px;font-weight:700;text-decoration:none;border-radius:10px;padding:0 12px;white-space:nowrap}
-.btn.call{background:var(--brand);color:#fff;border:1px solid var(--brand);min-width:108px}
+.btn{flex:1 1 auto;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:12.5px;font-weight:700;text-decoration:none;border-radius:10px;padding:0 12px;white-space:nowrap}
+.btn.call{background:var(--brand);color:#fff;border:1px solid var(--brand);min-width:96px}
+.btn.map{background:#262b33;color:#fff;border:1px solid #262b33;min-width:96px}
 .btn.ghost{background:#fff;color:var(--ink2);border:1px solid var(--line);flex:0 1 auto}
 .btn:active{transform:translateY(1px)}
 .panel.new .card{background:linear-gradient(180deg,#fafcff,#fff)}
@@ -58,145 +62,160 @@ footer{margin:22px 16px 0;text-align:center;color:var(--muted);font-size:11px;li
 <input class="tabctl" type="radio" name="tab" id="t0" checked><input class="tabctl" type="radio" name="tab" id="t1"><input class="tabctl" type="radio" name="tab" id="t2">
 <div class="wrap">
 <header class="appbar"><h1>오늘의 영업 브리핑</h1>
-<div class="sub">6월 21일 (일) · 천안·아산 / 두정동 · 매뉴얼클라쓰 영업용</div>
-<div class="legend"><span><i class="dot hot"></i>핫리드 · 지금 연락</span><span><i class="dot warm"></i>웜리드</span><span><i class="dot cool"></i>관찰</span></div>
+<div class="sub">6월 22일 (월) · 천안·아산 / 두정동 · 매뉴얼클라쓰 영업용</div>
+<div class="legend"><span><i class="dot hot"></i>핫리드</span><span><i class="dot warm"></i>웜리드</span><span><i class="dot cool"></i>관찰</span><span class="legend-note">· 각 탭 오픈시간 빠른 순 정렬</span></div>
 </header>
 <nav class="tabs"><label class="tab" for="t0">음식점<span class="cnt">5</span></label><label class="tab" for="t1">미용실<span class="cnt">5</span></label><label class="tab" for="t2">신규 오픈<span class="cnt">5</span></label></nav>
-<section class="panel" data-i="0"><div class="panel-cap">음식점 · 외식 (두정동)</div><article class="card hot">
+<section class="panel" data-i="0"><div class="panel-cap">음식점 · 외식 (두정동) · 오픈시간 순</div><article class="card hot">
       <div class="c-top"><span class="rank">1</span>
-        <div class="c-name"><div class="nm">팔각도 천안두정점</div><span class="badge">닭갈비·프랜차이즈</span></div>
-        <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 서부대로 746 1층</div>
-      <div class="status"><span class="k">운영현황 ·</span> 자체도메인(8gakdo.co.kr) 보유 프랜차이즈 가맹점. 두정 먹자상권.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">가맹 브랜드 = 본사 차원 가맹점 운영 매뉴얼이 곧 상품. 점주엔 현장 보완, 본사엔 가맹 표준화 패키지로 양방향 영업.</div></div>
-      <div class="actions"><a class="btn call" href="https://8gakdo.co.kr" target="_blank">📞 본사 홈페이지</a><a class="btn ghost" href="https://map.naver.com/p/search/팔각도 천안두정점" target="_blank">네이버지도/전화</a></div>
-    </article><article class="card hot">
-      <div class="c-top"><span class="rank">2</span>
         <div class="c-name"><div class="nm">청원식당 부대찌개 천안두정본점</div><span class="badge">찌개·전골</span></div>
         <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
       
+      <div class="hours dim">🕘 11:00 오픈 (마감 시간 지도 확인)</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정상가4길 32-4 1층</div>
       <div class="status"><span class="k">운영현황 ·</span> 상호에 &#x27;본점&#x27; 표기 = 분점 확장 의도. 블로그 마케팅 운영.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">&#x27;본점&#x27; 네이밍은 프랜차이즈화 초기 신호. 분점 내기 전 매뉴얼 정리하면 확장 속도가 빨라진다는 각도. 도입 효과 가장 큰 타이밍.</div></div>
-      <div class="actions"><a class="btn call" href="https://blog.naver.com/cwfood0101" target="_blank">📞 매장 블로그</a><a class="btn ghost" href="https://map.naver.com/p/search/청원식당 천안두정본점" target="_blank">네이버지도/전화</a></div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">&#x27;본점&#x27; 네이밍은 프랜차이즈화 초기 신호. 분점 내기 전 매뉴얼 정리하면 확장 속도가 빨라진다는 각도.</div></div>
+      <div class="actions"><a class="btn ghost" href="https://blog.naver.com/cwfood0101" target="_blank">매장 블로그</a><a class="btn map" href="https://map.naver.com/p/search/청원식당 천안두정본점" target="_blank">🗺 지도·전화</a></div>
+    </article><article class="card cool">
+      <div class="c-top"><span class="rank">2</span>
+        <div class="c-name"><div class="nm">도담이철판닭갈비</div><span class="badge">닭갈비</span></div>
+        <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
+      
+      <div class="hours">🕘 월~토 11:00–23:00 (일 휴무·브레이크 14:30–16:30)</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 부성4길 35-7 1층</div>
+      <div class="status"><span class="k">운영현황 ·</span> 두정역 인근 닭갈비, 단일 매장.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">단일매장 초기 단계. 온보딩 매뉴얼로 가볍게 입구를 트면 성장 시 단골 거래처. 관계부터.</div></div>
+      <div class="actions"><a class="btn call" href="tel:0507-1415-7869">📞 전화</a><a class="btn map" href="https://map.naver.com/p/search/도담이철판닭갈비 천안" target="_blank">🗺 지도</a></div>
     </article><article class="card warm">
       <div class="c-top"><span class="rank">3</span>
         <div class="c-name"><div class="nm">육화미 두정점</div><span class="badge">한식·육류</span></div>
         <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
       
+      <div class="hours">🕘 매일 11:30–23:00 (브레이크 16:00–17:00)</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 179 1층</div>
       <div class="status"><span class="k">운영현황 ·</span> &#x27;두정점&#x27; 다점포 브랜드, 인스타 공식계정 운영.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">&#x27;점&#x27; 다점포 → 지점 간 육류 손질·접객 편차 리스크. 지점 표준화로 일관된 맛·서비스 제안.</div></div>
-      <div class="actions"><a class="btn call" href="https://www.instagram.com/yukhwami_official" target="_blank">📞 인스타그램</a><a class="btn ghost" href="https://map.naver.com/p/search/육화미 두정점" target="_blank">네이버지도/전화</a></div>
+      <div class="actions"><a class="btn call" href="tel:0507-1390-0214">📞 전화</a><a class="btn ghost" href="https://www.instagram.com/yukhwami_official" target="_blank">인스타그램</a><a class="btn map" href="https://map.naver.com/p/search/육화미 두정점" target="_blank">🗺 지도</a></div>
     </article><article class="card warm">
       <div class="c-top"><span class="rank">4</span>
         <div class="c-name"><div class="nm">육향정 본점</div><span class="badge">한식·육류</span></div>
         <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
       
+      <div class="hours">🕘 12:00–23:00</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 노태산로 76</div>
-      <div class="status"><span class="k">운영현황 ·</span> &#x27;본점&#x27; 운영, 인스타 공식계정.</div>
+      <div class="status"><span class="k">운영현황 ·</span> &#x27;본점&#x27; 운영, 이베리코·숙성육 전문.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">본점 운영 = 확장 대비 조리·접객 매뉴얼 정비 수요. 고기 손질 표준화 각도로 접근.</div></div>
-      <div class="actions"><a class="btn call" href="https://www.instagram.com/yookhyangjeong_meat" target="_blank">📞 인스타그램</a><a class="btn ghost" href="https://map.naver.com/p/search/육향정 천안 두정" target="_blank">네이버지도/전화</a></div>
-    </article><article class="card cool">
+      <div class="actions"><a class="btn call" href="tel:041-555-0880">📞 전화</a><a class="btn map" href="https://map.naver.com/p/search/육향정 천안 두정" target="_blank">🗺 지도</a></div>
+    </article><article class="card hot">
       <div class="c-top"><span class="rank">5</span>
-        <div class="c-name"><div class="nm">도담이철판닭갈비</div><span class="badge">닭갈비</span></div>
-        <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 부성4길 35-7 1층</div>
-      <div class="status"><span class="k">운영현황 ·</span> 단일 매장, 별도 채널 미확인.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">단일매장 초기 단계. 온보딩 매뉴얼로 가볍게 입구를 트면 성장 시 단골 거래처. 관계부터.</div></div>
-      <div class="actions"><a class="btn call" href="https://map.naver.com/p/search/도담이철판닭갈비 천안" target="_blank">📞 네이버지도/전화</a></div>
-    </article></section><section class="panel" data-i="1"><div class="panel-cap">미용실 · 헤어 (두정동)</div><article class="card hot">
-      <div class="c-top"><span class="rank">1</span>
-        <div class="c-name"><div class="nm">찰스리헤어테크 천안두정동먹자골목점</div><span class="badge">미용실</span></div>
+        <div class="c-name"><div class="nm">팔각도 천안두정점</div><span class="badge">닭갈비·프랜차이즈</span></div>
         <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
       
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 168 2층</div>
-      <div class="status"><span class="k">운영현황 ·</span> 찰스리헤어테크의 또 다른 지점(천안·아산 다지점 브랜드).</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">천안·아산 4개 이상 지점 = 디자이너별 시술 편차가 최대 리스크. 본사(대표원장) 컨택으로 전 지점 시술·상담 매뉴얼 일괄 도입. 최우선.</div></div>
-      <div class="actions"><a class="btn call" href="http://www.instagram.com/charleslee__13" target="_blank">📞 인스타그램</a><a class="btn ghost" href="https://map.naver.com/p/search/찰스리헤어테크 천안두정" target="_blank">네이버지도/전화</a></div>
+      <div class="hours">🕘 평일 15:00–23:30 / 주말 11:30–24:00</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 서부대로 746 1층</div>
+      <div class="status"><span class="k">운영현황 ·</span> 자체도메인(8gakdo.co.kr) 보유 프랜차이즈 가맹점. 두정 먹자상권.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">가맹 브랜드 = 본사 차원 가맹점 운영 매뉴얼이 곧 상품. 점주엔 현장 보완, 본사엔 가맹 표준화 패키지로 양방향 영업.</div></div>
+      <div class="actions"><a class="btn call" href="tel:0507-1345-2231">📞 전화</a><a class="btn ghost" href="https://8gakdo.co.kr" target="_blank">본사 홈페이지</a><a class="btn map" href="https://map.naver.com/p/search/팔각도 천안두정점" target="_blank">🗺 지도</a></div>
+    </article><div class="panel-cap src">데이터: 네이버 지역검색·블로그(영업시간·전화 추출). 시간 미상은 지도에서 확인</div></section><section class="panel" data-i="1"><div class="panel-cap">미용실 · 헤어 (두정동) · 오픈시간 순</div><article class="card hot">
+      <div class="c-top"><span class="rank">1</span>
+        <div class="c-name"><div class="nm">찰스리헤어테크 천안두정역점</div><span class="badge">미용실</span></div>
+        <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
+      
+      <div class="hours">🕘 매일 10:00–22:00 (연중무휴)</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 238 2층</div>
+      <div class="status"><span class="k">운영현황 ·</span> 천안·아산 다지점 브랜드(두피·모발클리닉), 자체 도메인 운영.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">다지점 = 디자이너별 시술 편차가 최대 리스크. 본사(대표원장) 컨택으로 전 지점 시술·상담 매뉴얼 일괄 도입. 최우선.</div></div>
+      <div class="actions"><a class="btn ghost" href="http://charleshairtech.com/" target="_blank">본사 홈페이지</a><a class="btn map" href="https://map.naver.com/p/search/찰스리헤어테크 천안두정역점" target="_blank">🗺 지도·전화</a></div>
     </article><article class="card hot">
       <div class="c-top"><span class="rank">2</span>
         <div class="c-name"><div class="nm">로이드밤 천안두정점</div><span class="badge">미용실</span></div>
         <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
       
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 236 스타펠리스 2층 205호</div>
+      <div class="hours">🕘 평일 10:00–21:00 / 주말 10:00–20:00</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 236 스타펠리스 2층</div>
       <div class="status"><span class="k">운영현황 ·</span> 전국 프랜차이즈 &#x27;로이드밤&#x27; 가맹점.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">프랜차이즈 가맹점 = 본사 표준 매뉴얼 의존도 높음. 가맹점엔 현장 보완, 본사엔 표준화 패키지로 양방향 제안.</div></div>
-      <div class="actions"><a class="btn call" href="https://talk.naver.com/profile/wcddl1" target="_blank">📞 네이버 톡톡</a><a class="btn ghost" href="https://map.naver.com/p/search/로이드밤 천안두정점" target="_blank">네이버지도/전화</a></div>
-    </article><article class="card warm">
-      <div class="c-top"><span class="rank">3</span>
-        <div class="c-name"><div class="nm">하이유헤어 두정점</div><span class="badge">미용실</span></div>
-        <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 146 2층</div>
-      <div class="status"><span class="k">운영현황 ·</span> &#x27;두정점&#x27; 다점포 + 유튜브 채널 운영.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">유튜브까지 하는 마케팅 성숙 매장 = 운영 시스템화 관심 높을 가능성. 콘텐츠로 모은 고객을 서비스 표준화로 잡는 각도.</div></div>
-      <div class="actions"><a class="btn call" href="https://youtube.com/@HIUHAIR" target="_blank">📞 유튜브 채널</a><a class="btn ghost" href="https://map.naver.com/p/search/하이유헤어 두정점" target="_blank">네이버지도/전화</a></div>
-    </article><article class="card warm">
-      <div class="c-top"><span class="rank">4</span>
-        <div class="c-name"><div class="nm">유얼스헤어 두정점</div><span class="badge">미용실</span></div>
-        <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 219 1층</div>
-      <div class="status"><span class="k">운영현황 ·</span> &#x27;두정점&#x27; + 유튜브 채널 운영.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">콘텐츠 마케팅 성숙 매장. 운영 일관성·신규 디자이너 온보딩 표준화 제안.</div></div>
-      <div class="actions"><a class="btn call" href="https://youtube.com/@yourshaircheonan" target="_blank">📞 유튜브 채널</a><a class="btn ghost" href="https://map.naver.com/p/search/유얼스헤어 두정점" target="_blank">네이버지도/전화</a></div>
+      <div class="actions"><a class="btn call" href="tel:0507-1345-4005">📞 전화</a><a class="btn map" href="https://map.naver.com/p/search/로이드밤 천안두정점" target="_blank">🗺 지도</a></div>
     </article><article class="card cool">
-      <div class="c-top"><span class="rank">5</span>
+      <div class="c-top"><span class="rank">3</span>
         <div class="c-name"><div class="nm">플랜에이치 천안두정점</div><span class="badge">미용실</span></div>
         <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
       
+      <div class="hours">🕘 10:00–19:00 (디자이너별 휴무 상이)</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 237 석민빌딩 2층</div>
-      <div class="status"><span class="k">운영현황 ·</span> &#x27;점&#x27; 다점포, 인스타 공식계정.</div>
+      <div class="status"><span class="k">운영현황 ·</span> &#x27;점&#x27; 다점포, 네이버예약 운영.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">다점포 초기. 신규 디자이너 온보딩 매뉴얼로 입구를 트며 관계 형성.</div></div>
-      <div class="actions"><a class="btn call" href="https://www.instagram.com/planh_dujeong" target="_blank">📞 인스타그램</a><a class="btn ghost" href="https://map.naver.com/p/search/플랜에이치 천안두정점" target="_blank">네이버지도/전화</a></div>
-    </article></section><section class="panel new" data-i="2"><div class="panel-cap">신규 오픈 (천안·아산 · 최근 오픈)</div><article class="card hot">
-      <div class="c-top"><span class="rank">1</span>
-        <div class="c-name"><div class="nm">매드포갈릭 갤러리아 센터시티점<span class="tag-new">NEW</span></div><span class="badge">양식·프랜차이즈</span></div>
-        <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 불당동 갤러리아 센터시티</div>
-      <div class="status"><span class="k">운영현황 ·</span> 2026.02 신규 오픈, 패밀리레스토랑 프랜차이즈 가맹.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">오픈 직후 = 신규 직원 대거 채용 시점. 접객·조리 표준화가 초기 평점을 좌우. 신규 가맹점 표준화 수요 정점.</div></div>
-      <div class="actions"><a class="btn call" href="https://map.naver.com/p/search/매드포갈릭 천안센터시티" target="_blank">📞 네이버지도/전화</a></div>
+      <div class="actions"><a class="btn call" href="tel:041-558-5566">📞 전화</a><a class="btn map" href="https://map.naver.com/p/search/플랜에이치 천안두정점" target="_blank">🗺 지도</a></div>
     </article><article class="card warm">
-      <div class="c-top"><span class="rank">2</span>
-        <div class="c-name"><div class="nm">일품집 천안백석점<span class="tag-new">NEW</span></div><span class="badge">장어·보양식</span></div>
+      <div class="c-top"><span class="rank">4</span>
+        <div class="c-name"><div class="nm">하이유헤어 두정점</div><span class="badge">미용실</span></div>
         <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
       
+      <div class="hours dim">🕘 영업시간 지도 확인 (연중무휴 운영)</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정로 146 2층</div>
+      <div class="status"><span class="k">운영현황 ·</span> &#x27;두정점&#x27; 다점포 + 유튜브 채널 운영.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">유튜브까지 하는 마케팅 성숙 매장 = 운영 시스템화 관심 높을 가능성. 콘텐츠로 모은 고객을 서비스 표준화로 잡는 각도.</div></div>
+      <div class="actions"><a class="btn ghost" href="https://youtube.com/@HIUHAIR" target="_blank">유튜브 채널</a><a class="btn map" href="https://map.naver.com/p/search/하이유헤어 두정점" target="_blank">🗺 지도·전화</a></div>
+    </article><article class="card warm">
+      <div class="c-top"><span class="rank">5</span>
+        <div class="c-name"><div class="nm">유얼스헤어 두정점</div><span class="badge">미용실</span></div>
+        <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
+      
+      <div class="hours dim">🕘 영업시간 지도 확인</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 두정동 219</div>
+      <div class="status"><span class="k">운영현황 ·</span> &#x27;두정점&#x27; + 유튜브 채널 운영.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">콘텐츠 마케팅 성숙 매장. 운영 일관성·신규 디자이너 온보딩 표준화 제안.</div></div>
+      <div class="actions"><a class="btn ghost" href="https://youtube.com/@yourshaircheonan" target="_blank">유튜브 채널</a><a class="btn map" href="https://map.naver.com/p/search/유얼스헤어 두정점" target="_blank">🗺 지도·전화</a></div>
+    </article><div class="panel-cap src">데이터: 네이버 지역검색·블로그(영업시간·전화 추출). 시간 미상은 지도에서 확인</div></section><section class="panel new" data-i="2"><div class="panel-cap">신규 오픈 (천안·아산 · 최근 오픈) · 오픈시간 순</div><article class="card cool">
+      <div class="c-top"><span class="rank">1</span>
+        <div class="c-name"><div class="nm">남쪽의미용사<span class="tag-new">NEW</span></div><span class="badge">미용실</span></div>
+        <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
+      <div class="openinfo">🗓 2025 하반기 오픈</div>
+      <div class="hours">🕘 화~일 10:00–21:00 (월 휴무)</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 두정동/성정동</div>
+      <div class="status"><span class="k">운영현황 ·</span> 최근 오픈 신상 미용실, 두정·성정 2곳.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">오픈 초기 신상 미용실. 시작 단계에 서비스·위생 매뉴얼을 셋업하면 성장과 함께 표준이 자리잡음.</div></div>
+      <div class="actions"><a class="btn map" href="https://map.naver.com/p/search/남쪽의미용사 천안" target="_blank">🗺 지도·전화</a></div>
+    </article><article class="card hot">
+      <div class="c-top"><span class="rank">2</span>
+        <div class="c-name"><div class="nm">매드포갈릭 갤러리아 센터시티점<span class="tag-new">NEW</span></div><span class="badge">양식·프랜차이즈</span></div>
+        <span class="pill" style="color:#d6453f;background:#fdecea">핫리드</span></div>
+      <div class="openinfo">🗓 2026.02 오픈</div>
+      <div class="hours">🕘 10:30–21:00 (백화점 휴점일 휴무)</div>
+      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 불당동 갤러리아 센터시티 8층</div>
+      <div class="status"><span class="k">운영현황 ·</span> 2026.02 신규 오픈, 패밀리레스토랑 프랜차이즈 가맹.</div>
+      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">오픈 직후 = 신규 직원 대거 채용 시점. 접객·조리 표준화가 초기 평점을 좌우.</div></div>
+      <div class="actions"><a class="btn map" href="https://map.naver.com/p/search/매드포갈릭 천안센터시티" target="_blank">🗺 지도·전화</a></div>
+    </article><article class="card warm">
+      <div class="c-top"><span class="rank">3</span>
+        <div class="c-name"><div class="nm">일품집 천안백석점<span class="tag-new">NEW</span></div><span class="badge">장어·보양식</span></div>
+        <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
+      <div class="openinfo">🗓 2026.05 오픈</div>
+      <div class="hours dim">🕘 영업시간 지도 확인</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 동남구 백석동</div>
       <div class="status"><span class="k">운영현황 ·</span> 2026.05 신규 오픈, &#x27;백석점&#x27; 지점.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">신규 지점 오픈 = 장어 손질·구이 등 난이도 높은 조리의 표준화 수요. 본점 매뉴얼 이식 각도.</div></div>
-      <div class="actions"><a class="btn call" href="https://map.naver.com/p/search/일품집 천안백석점" target="_blank">📞 네이버지도/전화</a></div>
+      <div class="actions"><a class="btn map" href="https://map.naver.com/p/search/일품집 천안백석점" target="_blank">🗺 지도·전화</a></div>
     </article><article class="card warm">
-      <div class="c-top"><span class="rank">3</span>
+      <div class="c-top"><span class="rank">4</span>
         <div class="c-name"><div class="nm">도경솥뚜껑삼겹살 천안성환점<span class="tag-new">NEW</span></div><span class="badge">고기·삼겹살</span></div>
         <span class="pill" style="color:#c07d12;background:#fdf3e2">웜리드</span></div>
-      
+      <div class="openinfo">🗓 2026.04 오픈</div>
+      <div class="hours dim">🕘 영업시간 지도 확인</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 서북구 성환읍</div>
       <div class="status"><span class="k">운영현황 ·</span> 2026.04 신규 오픈한 고기집.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">오픈 직후 온보딩 부담이 큰 시점. 솥뚜껑 조리·반찬 세팅 표준화로 초기 운영 안정화 제안.</div></div>
-      <div class="actions"><a class="btn call" href="https://map.naver.com/p/search/도경솥뚜껑삼겹살 천안성환" target="_blank">📞 네이버지도/전화</a></div>
+      <div class="actions"><a class="btn map" href="https://map.naver.com/p/search/도경솥뚜껑삼겹살 천안성환" target="_blank">🗺 지도·전화</a></div>
     </article><article class="card cool">
-      <div class="c-top"><span class="rank">4</span>
+      <div class="c-top"><span class="rank">5</span>
         <div class="c-name"><div class="nm">브릭빈커피로스터스<span class="tag-new">NEW</span></div><span class="badge">카페·로스터리</span></div>
         <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
-      
+      <div class="openinfo">🗓 탕정 신상</div>
+      <div class="hours dim">🕘 영업시간 지도 확인</div>
       <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>아산 탕정면 탕정면로8번길 47-3 1층</div>
       <div class="status"><span class="k">운영현황 ·</span> 탕정 신상 로스터리 카페, 스마트스토어 운영.</div>
       <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">신상 카페 = 바리스타 추출 편차가 품질 리스크. 표준 레시피·추출 매뉴얼로 맛 고정 제안.</div></div>
-      <div class="actions"><a class="btn call" href="https://smartstore.naver.com/brickbean" target="_blank">📞 스마트스토어</a><a class="btn ghost" href="https://map.naver.com/p/search/브릭빈커피로스터스 아산" target="_blank">네이버지도/전화</a></div>
-    </article><article class="card cool">
-      <div class="c-top"><span class="rank">5</span>
-        <div class="c-name"><div class="nm">남쪽의미용사<span class="tag-new">NEW</span></div><span class="badge">미용실</span></div>
-        <span class="pill" style="color:#1f9268;background:#e7f5ef">관찰</span></div>
-      
-      <div class="addr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#9aa3ad" stroke-width="2"/><circle cx="12" cy="10" r="2.4" fill="#9aa3ad"/></svg>천안 두정동/성정동</div>
-      <div class="status"><span class="k">운영현황 ·</span> 2025년 말 오픈 신상 미용실, 두정·성정 2곳.</div>
-      <div class="point"><div class="lab">▶ 도입 포인트 · 전화 멘트</div><div class="txt">오픈 초기 신상 미용실. 시작 단계에 서비스·위생 매뉴얼을 셋업하면 성장과 함께 표준이 자리잡음.</div></div>
-      <div class="actions"><a class="btn call" href="https://map.naver.com/p/search/남쪽의미용사 천안" target="_blank">📞 네이버지도/전화</a></div>
-    </article><div class="panel-cap src">데이터: 네이버 블로그 '신규오픈/그랜드오픈' 최신글 + 지역검색 '신상' 키워드</div></section>
-<footer>데이터 출처: 네이버 지역검색·블로그 · 매일 09:00 자동 생성<br>버튼 탭 시 네이버지도(전화)·홈페이지·블로그로 이동</footer>
+      <div class="actions"><a class="btn ghost" href="https://smartstore.naver.com/brickbean" target="_blank">스마트스토어</a><a class="btn map" href="https://map.naver.com/p/search/브릭빈커피로스터스 아산" target="_blank">🗺 지도·전화</a></div>
+    </article><div class="panel-cap src">데이터: 네이버 지역검색·블로그(영업시간·전화 추출). 시간 미상은 지도에서 확인</div></section>
+<footer>데이터 출처: 네이버 지역검색·블로그 · 매일 09:00 자동 생성<br>전화/지도 버튼 탭으로 바로 연락 · 영업시간 순으로 동선 계획</footer>
 </div></body></html>
